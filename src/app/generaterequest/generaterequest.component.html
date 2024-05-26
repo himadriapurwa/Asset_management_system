@@ -1,0 +1,217 @@
+<app-usernav></app-usernav>
+
+<!-- <div class="table-responsive">
+              
+  <table
+  id="tableData1"
+  class="table w-100 table-striped table-bordered table-hover mt-3 "
+  datatable
+  [dtOptions]="dtOptions"
+  [dtTrigger]="dtTrigger"
+  >
+  <thead class="table-primary"></thead>
+  </table>
+</div> -->
+
+<body>
+  <div class="">
+  
+    <div class="card shadow  bg-body rounded">
+      <div class="card-header text-center">
+          <h2 class="heading" style="color: white;">
+          Asset Request Screen
+          </h2>
+          </div>
+          <div class="card-body">
+          
+          
+            <form [formGroup]="yourForm">
+  
+              <div class="row mb-3">
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Asset Type</label><span style="color: red;">*</span>
+                  <select class="form-select" formControlName="assetType" 
+                  (change)="AssetTypeChangeFunction()" aria-label="Default select example" 
+                  [(ngModel)]="assetTypeModel"
+                  [ngClass]="{ 'is-invalid': submitted && f.assetType.errors }"
+                  >
+                    <option value="">----Select----</option>
+                    <option *ngFor="let i of assetTypeData">
+                      {{i.asset_type}}
+                  </option>
+                  </select>
+                  <div *ngIf="yourForm.get('assetType').hasError('required')" class="invalid-feedback">
+                    Asset Type is required.
+                </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Category</label><span style="color: red;">*</span>
+                  <select class="form-select" formControlName="category" (change)="getSubCategoriesfunction()" aria-label="Default select example" 
+                  [(ngModel)]="assetcategoryModel"
+                  [ngClass]="{ 'is-invalid': submitted && f.category.errors }"
+                  >
+                    <option value="">----Select----</option>
+                    <option *ngFor="let i of assetcategoryData">
+                      {{i.category}}
+                  </option>
+                  </select>
+                  <div *ngIf="yourForm.get('category').hasError('required')" class="invalid-feedback">
+                   Category is required.
+                </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Sub Category</label><span style="color: red;">*</span>
+                  <select class="form-select" formControlName="subcategory" (change)="getAssetIdfunction()"
+                   [(ngModel)]="assetsubCategoryModel" 
+                   aria-label="Default select example"
+                   [ngClass]="{ 'is-invalid': submitted && f.subcategory.errors }"
+                   >
+                    <option value="">----Select----</option>
+                    <option *ngFor="let i of assetsubCategoryData">
+                      {{i.subcategory}}
+                  </option>
+                  </select>
+                  <div *ngIf="yourForm.get('subcategory').hasError('required')" class="invalid-feedback">
+                    SubCategory is required.
+                </div>
+                </div>
+
+              </div>
+                <div class="row mb-3">
+                
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Number of Units</label><span style="color: red;">*</span>
+                  <input type="email" class="form-control" formControlName="numofunits" [(ngModel)]="requestFormObj.units_required" 
+                  id="exampleFormControlInput1" 
+                  placeholder="units"
+                  (keyup)="validateUnitsNumber()"
+                  [ngClass]="{ 'is-invalid': submitted && f.numofunits.errors }"
+                  >
+                  <div *ngIf="yourForm.get('numofunits').hasError('required')" class="invalid-feedback">
+                    Units is required.
+                </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Priority</label><span style="color: red;">*</span>
+                  <select class="form-select" formControlName="priority" aria-label="Default select example" 
+                  [(ngModel)]="requestFormObj.priority"
+                  [ngClass]="{ 'is-invalid': submitted && f.priority.errors }"
+                  >
+                    <option value="">----Select----</option>
+                    <option value="High">High</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Low">Low</option>
+                  </select>
+                  <div *ngIf="yourForm.get('priority').hasError('required')" class="invalid-feedback">
+                   Priority is required.
+                </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Extend Warranty?</label><span style="color: red;">*</span>
+                  <select class="form-select" formControlName="extendWarranty" aria-label="Default select example" 
+                  (change)="onWarrantyChange()" [(ngModel)]="askExtendWarrantyModel"
+                  [ngClass]="{ 'is-invalid': submitted && f.extendWarranty.errors }"
+                  >
+                    <option value="">----Select----</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  <div *ngIf="yourForm.get('extendWarranty').hasError('required')" class="invalid-feedback">
+                    Extend Warranty select is required.
+                </div>
+                
+                </div>
+              </div>
+    
+           
+    
+              <div class="row mb-3">
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Number of Years</label>
+                  <input type="text" class="form-control" 
+                  id="numOfYearsId" 
+                  placeholder="years"
+                  [disabled]="inputDisabled"
+                  
+                
+                  
+                  >
+  
+                </div>
+    
+                <div class="col-lg-4">
+                  <label for="exampleFormControlInput1" class="form-label">Approved by Manager</label><span style="color: red;">*</span>
+                  <select class="form-select" aria-label="Default select example" 
+                  (change)="onApproveDocumentSelect()"
+                  [(ngModel)]="managerApprovalModel"
+                  formControlName="approvedByManager"
+                  [ngClass]="{ 'is-invalid': submitted && f.approvedByManager.errors }"
+                  >
+                    <option value="">----Select----</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  <div *ngIf="yourForm.get('approvedByManager').hasError('required')" class="invalid-feedback">
+                    Manager Approval is required.
+                </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="document" class="form-label required">Upload Document</label>
+                  <input class="form-control" 
+                  accept="application/pdf" type="file" id="formFile" name="upload" (change)="onFileSelected($event)"
+                  [disabled]="isDocDisabled"
+                      />
+
+                      <!-- <input class="form-control" accept="application/pdf" type="file" id="formFile" name="upload"
+                                (change)="onFileSelected($event)" /> -->
+                </div>
+    
+              </div>
+    
+              <div class="row">
+               
+                <div class="col-lg-12">
+                  <label for="exampleFormControlInput1" class="form-label">Remarks</label><span style="color: red;">*</span>
+                  <textarea class="form-control" formControlName="remarks" 
+                  [(ngModel)]="requestFormObj.remarks" id="remarks" name="remarks"
+                  [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"
+                  ></textarea>
+                  <div *ngIf="yourForm.get('remarks').hasError('required')" class="invalid-feedback">
+                    Remarks is required.
+                </div>
+                </div>
+              </div>
+    
+              <div class="row mt-2">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="button" id="rqstbtn" class="btn-style" (click)="submitRequestFunction()" >
+                      Submit
+                  </button>
+              </div>
+              </div>
+  
+  
+            </form>
+            
+            
+           
+        </div>
+    
+    </div>
+  </div>
+  
+</body>
+<div style="padding-top: -1%;">
+  <app-footer></app-footer>
+</div>
+
+
+
+
+
+            

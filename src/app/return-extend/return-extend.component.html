@@ -1,0 +1,168 @@
+<app-assetmanagernav></app-assetmanagernav>
+<body>
+  
+    <div class="">
+  
+          <div class="card text-center m-3 card shadow  rounded">
+              <div class="card-header headerr text-center">
+                  <h2 class="heading" style="color: white;">
+                      Requests
+                  </h2>
+                  </div>
+                  <div class="card-body"  style="background:rgb(223, 209, 238)">
+                   
+                    <div class="table-responsive">
+                        <table
+                        id="tableData1"
+                        class="table w-100 table-striped table-bordered table-hover mt-3 "
+                        datatable
+                        [dtOptions]="dtOptions"
+                        [dtTrigger]="dtTrigger"
+                        >
+                        <thead class="table-dark"></thead>
+                        </table>
+                    </div>
+                </div>
+          
+          </div>
+        </div>
+  
+        <div style="padding-top: -1%;">
+          <app-footer></app-footer>
+        </div>
+  </body>
+
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"  id="exampleModalLabel">Action</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="Username" disabled>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">Asset Type</label>
+                    <input type="text" class="form-control" id="AssetType" 
+                    aria-describedby="emailHelp"
+                    disabled
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Category</label>
+                    <input type="text" class="form-control" id="CategoryId" disabled>
+                  </div>
+                </div>
+              
+              </div>
+
+
+              <div class="row">
+                
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Sub Category</label>
+                    <input type="text" class="form-control" id="SubCategoryId" disabled>
+                  </div>
+                </div>
+
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Requested Units</label>
+                    <input type="text" class="form-control" id="Units" disabled>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <label for="exampleInputPassword1" class="form-label">Ext Warranty years</label>
+                  <input type="text" class="form-control" id="WarrantyYearse" disabled>
+              </div>
+
+              </div>
+                
+
+              <div class="row">
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <label for="exampleInputPassword1" class="form-label">Request Date</label>
+                  <input type="text" class="form-control" id="RequestDate" disabled>
+                </div>
+
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12" *ngIf="!GetRetExtProductsData && GetRetExtProductsData.length == 0" >
+                  <div class="mb-4 ">
+                    <label for="exampleFormControlInput1" class="form-label">Team Member</label><span style="color: red;">*</span>
+              <select  class="form-select" name="assetType" 
+               aria-label="Default select example" 
+              [(ngModel)]="teamMemberModel"
+              id="teamMemberId"
+              (change)="getTeamAllocfunction()"
+             
+              >
+                <option value="">----Select----</option>
+                <option *ngFor="let i of teamMemberData">
+                  {{i.member_name}}
+              </option>
+              </select>
+                  </div>
+                </div>
+
+              </div>
+              <div class="m-2" *ngIf="GetRetExtProductsData && GetRetExtProductsData.length > 0" >
+                <div class="card-header">
+                    <h2 class="card-title heading">Product Details</h2>
+                </div>
+                <div class="card-body">
+                  <div class="col-12 col-md-12 col-sm-12 col-lg-6">
+                </div>
+                    <table class="table table-responsive table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product Sequence ID</th>
+                                <th>Warranty Upto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of GetRetExtProductsData">
+                                <td>{{ product.product_seq_id }}</td>
+                                <td>{{ product.warranty_upto }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="!GetRetExtProductsData || GetRetExtProductsData.length === 0">
+                        No products available.
+                    </div>
+                    <!-- <button class="btn btn-primary mt-3" (click)="submit()">Submit</button> -->
+                </div>
+            </div>
+              
+              <div class="row">
+                <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+                  <label for="exampleInputPassword1" class="form-label">Asset Manager Remarks</label>
+                  <textarea type="text" class="form-control" id="Remarks"></textarea>
+                </div>
+              </div>
+
+           
+                
+              </form>
+        </div>
+
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="editApproveDetails()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,61 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid" >
+    <a class="navbar-brand" href="/landing-page">AMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item active" routerLinkActive="active">
+          <a class="nav-link " routerLinkActive="active" routerLink="/deptheadapproval" 
+          aria-current="page">Requests</a>
+        </li>
+   
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link "  routerLinkActive="active" routerLink="/deptrqsthstry" 
+          aria-current="page" >History</a>
+        </li>
+       
+      </ul>
+    </div>
+    <div  style="margin-right: 4%;"><i class="fas fa-user icon" 
+      data-bs-toggle="tooltip" data-bs-placement="bottom" title="User"
+      style="color: #331f51;"></i>
+     {{a}}  
+    </div>
+    <div>
+     <a href="/login"> <i class="fas fa-sign-out-alt fa-lg icon" 
+      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout"
+      style="color: #4a2d62;"></i></a>
+    </div>
+   
+  </div>
+</nav>
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg bg-color mb-0">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white heading">Asset Management System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+         
+          <li class="nav-item">
+            <a class="nav-link active text-white" (click)="toRequests()"  aria-current="page">Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" (click)="toHistory()" aria-current="page">History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" (click)="toLogIn()" aria-current="page">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav> -->

@@ -1,0 +1,158 @@
+<app-adminui></app-adminui>
+
+<div class="body p-3">
+
+  <div class="card text-center m-3 card shadow  rounded">
+    <div class="card-header headerr text-center">
+
+            <!-- <h2 class="heading" style="color: white;">
+               Team Members
+            </h2> -->
+            <div class="row">
+              <div class="col-11"><h2>Team Members</h2></div>
+              <div class="col-1"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#NewTeamMemberModal">
+                <i class="fas fa-plus fa-lg" style="color: #ffffff;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add New Team Member"></i></button></div>
+            </div>          </div>
+         <div class="card-body"  style="background:rgb(223, 209, 238)">
+            <!-- <div class="btn-container mb-2 text-end">
+                <Button class="btn btn-primary"  data-bs-target='#NewTeamMemberModal' data-bs-toggle='modal'>Add TeamMember</Button>
+              </div>  -->
+            <div class="table-responsive">
+                <table
+                id="tableData1"
+                class="table w-100 table-striped table-bordered table-hover mt-3 "
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                >
+                <thead class="table-dark" ></thead>
+                </table>
+            </div>
+ 
+</div>
+</div>
+</div>
+
+<app-footer></app-footer>
+
+
+<div class="modal fade" id="NewTeamMemberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h1 class="modal-title  fs-5"  id="exampleModalLabel">Add TeamMember</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg" style="color: white;"></i></button>
+
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="yourForm">
+              <div class="row">
+                <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label><span style="color: red;">*</span>
+                    <input type="text" class="form-control" [(ngModel)]="addMemberNameModel" name="name" 
+                     formControlName="addMemberNameModel" placeholder="enter name"
+                     [ngClass]="{ 'is-invalid': submitted && f.addMemberNameModel.errors }"
+                     >
+                     <div *ngIf="yourForm.get('addMemberNameModel').hasError('required')" class="invalid-feedback">
+                      Name is required.
+                  </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputEmail3" class="form-label">Category</label><span style="color: red;">*</span>
+                    <select class="form-select"  aria-label="Default select example" 
+                    [(ngModel)]="assetcategoryModel" name="category"
+                    formControlName="assetcategoryModel" 
+                    [ngClass]="{ 'is-invalid': submitted && f.assetcategoryModel.errors }"
+                    >
+                        <option value="">----Select----</option>
+                        <option *ngFor="let i of assetcategoryData">
+                          {{i.category}}
+                      </option>
+                      </select>
+                      <div *ngIf="yourForm.get('assetcategoryModel').hasError('required')" class="invalid-feedback">
+                       Category is required.
+                    </div>
+                  </div>
+                </div>
+                </div>
+           
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                      <div class="mb-4">
+                        <label for="exampleFormControlInput1" class="form-label">Mail ID</label><span style="color: red;">*</span>
+                        <input type="email" class="form-control" name="mail" [(ngModel)]="addMailIdModel"
+                          id="exampleInputEmail1"  formControlName="addMailIdModel" 
+                          placeholder="name@email.com"
+                          [ngClass]="{ 'is-invalid': submitted && f.addMailIdModel.errors }"
+                          >
+                          <div *ngIf="yourForm.get('addMailIdModel').hasError('required')" class="invalid-feedback">
+                            Mail ID is required.
+                        </div>
+                      </div>
+                    </div>
+                
+                    </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="submitRequestFunction()"   >Add</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="EditTeamMemberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"  id="exampleModalLabel">Edit TeamMember</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input type="text" class="form-control"  id="editInputName1" disabled >
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                  <div class="mb-4">
+                    <label for="exampleInputEmail3" class="form-label">Category</label>
+                    <select class="form-select"  aria-label="Default select example" 
+                    id="editCategoryId"
+                    [(ngModel)]="editcategoryModel" [ngModelOptions]="{standalone: true}">
+                        <option value="">----Select----</option>
+                        <option *ngFor="let i of assetcategoryData">
+                          {{i.category}}
+                      </option>
+                      </select>
+                  </div>
+                </div>
+                </div>
+           
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                      <div class="mb-4">
+                        <label for="exampleFormControlInput1" class="form-label">Mail ID</label>
+                        <input type="text" class="form-control"  id="editInputEmail1" disabled>
+                      </div>
+                    </div>
+                
+                    </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="EditTeamMemberFunction()"   data-bs-dismiss="modal">Add</button>
+  
+        </div>
+      </div>
+    </div>
+  </div>

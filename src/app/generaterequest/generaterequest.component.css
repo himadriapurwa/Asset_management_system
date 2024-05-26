@@ -1,0 +1,82 @@
+.bg-main{
+    height: 80vh;
+    position: relative;
+  }
+  
+  .bg-color{
+   
+    background-color:#40baeb;
+    
+  }
+
+
+  .nav-link{
+    color: var(--bs-main-color);
+    font-weight: bold;
+  }
+  
+  .nav-link:hover{
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+
+  .navbar{
+    z-index: 100;
+  }
+
+  .heading{
+    font-weight: bold;
+    font-size: 1.7rem;
+    
+}
+
+
+
+
+.editbtn:hover{
+  cursor: pointer;
+}
+
+/* label{
+  font-weight: bold;
+} */
+
+
+
+.card-header{
+    
+  /* background-color: #40baeb ; */
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  
+  /* color: White; */
+}
+
+
+.required:after {
+  content:"*";
+  color: red;
+}
+
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+
+.btn-style{
+  height: 8vh;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}

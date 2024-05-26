@@ -1,0 +1,31 @@
+<app-asset-allocation-navbar></app-asset-allocation-navbar>
+<div class="row">
+  <div class="col-lg-6 col-md-12 col-sm-12 ">
+    <div class="card text-center m-3 chart1-container">
+      <div class="card-header" style="background-color: rgb(53, 15, 90); color: white;">
+    <H1 style=" font-weight: bold;">Assets Data View</H1>  
+      </div>
+      <div class="card-body">
+              <canvas  id="MyChart" >{{ chart }}</canvas>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="col-lg-6 col-md-12 col-sm-12 ">
+    <div class="card text-center m-3 chart1-container">
+      <div class="card-header" style="background-color: rgb(53, 15, 90); color: white;">
+    <H1 style=" font-weight: bold;">Status Master Graph</H1>  
+      </div>
+      <div class="card-body">
+        <canvas  id="MyChart2" >{{ chart2 }}</canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="padding-top: -1%;">
+    <app-footer></app-footer>
+  </div>

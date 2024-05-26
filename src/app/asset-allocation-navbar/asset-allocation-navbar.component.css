@@ -1,0 +1,42 @@
+/* .bg-main{
+    height: 80vh;
+    position: relative;
+  }
+  
+  .bg-color{
+    background-color:#40baeb;
+  }
+
+
+  .nav-link{
+    color: var(--bs-main-color);
+    font-weight: bold;
+  }
+  
+  .nav-link:hover{
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+
+  .navbar{
+    z-index: 100;
+  }
+
+  .heading{
+    font-weight: bold;
+    font-size: 1.7rem;
+    
+} */
+
+
+.navbar .navbar-nav .nav-link:hover{
+  background-color: rgb(227, 219, 235);
+}
+.navbar .navbar-nav .nav-link.active
+{
+color:black;
+background-color: rgb(205, 188, 223);
+text-transform:uppercase;
+font-weight: bold;
+
+}

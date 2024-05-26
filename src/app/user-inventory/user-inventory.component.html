@@ -1,0 +1,31 @@
+<app-usernav></app-usernav>
+<div id="category-container" class="card text-center m-3 card shadow  rounded">
+    <div class="card-header headerr text-center">
+          <div class="card-header">
+              <h2 class="heading" style="color: white;">
+                 Inventory
+              </h2>
+            </div>
+            <div class="card-body"  style="background:rgb(223, 209, 238)">
+              <!-- <div class="btn-container mb-2 text-end">
+                  <Button class="btn btn-primary"  data-bs-target='#NewCityModal' data-bs-toggle='modal'>Assets</Button>
+                </div>  -->
+              <div class="table-responsive">
+                  <table
+                  id="tableData1"
+                  class="table w-100 table-striped table-bordered table-hover mt-3 "
+                  datatable
+                  [dtOptions]="dtOptions"
+                  [dtTrigger]="dtTrigger"
+                  >
+                  <thead class="table-dark"></thead>
+                  </table>
+              </div>
+  </div>
+  </div>
+  </div>
+  
+  <div style="padding-top: -1%;">
+    <app-footer></app-footer>
+  </div>
+  
